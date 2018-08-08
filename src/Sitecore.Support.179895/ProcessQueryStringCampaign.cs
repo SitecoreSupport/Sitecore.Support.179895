@@ -1,6 +1,7 @@
 ﻿namespace Sitecore.Support.Analytics.Pipelines.StartTracking
 {
   using System;
+  using System.Linq;
   using System.Web;
 
   using Sitecore.Analytics;
@@ -42,7 +43,7 @@
 
       if (campaign != null)
       {
-        campaign = campaign.Trim();
+        campaign = campaign.Split(',').Last().Trim(); //fix issue 179895
 
         this.TriggerCampaign(campaign);
       }
